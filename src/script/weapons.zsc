@@ -1,4 +1,4 @@
-//#include "script/laspistol.zsc"
+#include "script/laspistol.zsc"
 #include "script/spinrifle.zsc"
 #include "script/chainrail.zsc"
 //include "script/lasrifle.zsc"

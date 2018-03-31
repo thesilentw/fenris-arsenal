@@ -4,8 +4,10 @@ Class FenrisPlayer : DoomPlayer {
 		Player.DisplayName "FenrisPlayer";
 		Player.StartItem "Chainrail";
 		Player.StartItem "Spinrifle";
+		Player.StartItem "Laspistol";
 		Player.StartItem "Clip", 500;
 		Player.StartItem "Cell", 500;
+		Player.AttackZOffset 8;
 		}
 }
 //eof

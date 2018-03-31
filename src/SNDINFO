@@ -3,17 +3,17 @@ weapons/chrl_fire1 chrlsht2
 weapons/chrl_rechamber chrlrc5
 $volume weapons/chrl_rechamber 0.4
 // laser pistol
-weapons/lpst_firebig lpshtbg
-weapons/lpst_chargebeep lpchgbp
-weapons/lpst_chargebeeplevel2 lpchgbp2
-weapons/lpst_chargebeeplevel3 lpchgbp3
-weapons/lpst_chargebeeplevel4 lpchgbp4
-weapons/lpst_chargebeepoverload lpchgbpo
-weapons/lpst_chargestart lpchgst
-weapons/lpst_impact lpimp
-weapons/lpst_reload lprld
-weapons/lpst_fire lpsht
-weapons/lpst_overloadexplosion lpovrxp
+weapons/lsps_firebig lpshtbg
+weapons/lsps_chargebeep lpchgbp
+weapons/lsps_chargebeeplevel2 lpchgbp2
+weapons/lsps_chargebeeplevel3 lpchgbp3
+weapons/lsps_chargebeeplevel4 lpchgbp4
+weapons/lsps_chargebeepoverload lpchgbpo
+weapons/lsps_chargestart lpchgst
+weapons/lsps_impact lpimp
+weapons/lsps_reload lprld
+weapons/lsps_fire lpsht
+weapons/lsps_overloadexplosion lpovrxp
 // spinrifle
 weapons/sprf_deploy sprfdply
 weapons/sprf_fire sprfsht
