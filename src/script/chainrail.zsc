@@ -1,42 +1,58 @@
-ACTOR Chainrail : Weapon {
-	inventory.pickupMessage "Coralled a ChainRail!"
-	weapon.ammoType "cell"
-	weapon.ammoUse "1"
-	weapon.slotNumber "4"
-	weapon.ammogive "100"
-	attacksound "weapons/chrl_fire1"
-	
+// Nocke (Nok-uh) HVB-X Chainrail
+// Nocke Armaments' pride and joy, the Chainrail brings the instant-hit capability of a railgun to the average soldier,
+// at a cyclic rate of just under 60 RPM. The HVB-X's 14mm tungsten darts are guaranteed to put a dent in anyone's day,
+// if not all the way through it. The belt-feed means that the average soldier rarely has to reload under normal combat
+// conditions, and the caseless and linkless ammo means little or no waste left on the battlefield.
+//
+// Nocke Armaments - Nock and Loose!
+// Ask about our high-risk contractor discounts!
+//
+//
+Class Chainrail : DoomWeapon {	
+	default {
+		inventory.pickupMessage "Coralled a ChainRail!";
+		weapon.slotNumber 4;
+		Weapon.AmmoUse 1;
+		Weapon.AmmoGive 40;
+		Weapon.AmmoType "Cell";
+		Obituary "%o got railed by %k's Chainrail.";
+	}
 	states {
-		Spawn:
-			TLGL A -1  //no pickup sprite yet
-			Stop
 		Ready:
-			CHRL A 1 A_WeaponReady
-			Loop
+			CHRL A 1 A_WeaponReady();
+			Loop;
 		Select:
-			CHRL A 1 A_Raise
-			Loop
+			CHRL A 1 A_Raise();
+			Loop;
 		Deselect:
-			CHRL A 1 A_Lower
-			Loop
+			CHRL A 1 A_Lower();
+			Loop;
 		Fire:
-			CHRL A 0 A_GunFlash
-			TNT1 A 0 A_RailAttack(100, 0, 1, "darkorchid", "aquamarine1", RGF_FULLBRIGHT, 0, "none", 0, 0, 0, 20, 1, 2, "none", 5, 180, 2)
-			// recoil anims
-			CHRL A 3 Offset(0,44)
-			CHRL A 3 Offset(0,40)
-			CHRL A 4 Offset(0,38)
-			CHRL A 6 Offset(0,0)
-			CHRL A 0 A_PlaySound ("weapons/chrl_rechamber")
-			CHRL BCD 5 Offset(-4,38)
-			CHRL A 2 Offset(1,36)
-			CHRL A 2 Offset(2,34)
-			CHRL A 1 Offset(1,32)
-			CHRL A 1 A_ReFire 
-			Goto Ready	
-		Flash:
-			MISF A 4 BRIGHT A_Light2  //no muzzleflash yet
-			TNT1 A 1 A_Light0
-			Goto LightDone
+			CHRL A 1 Offset(0,34);
+			TNT1 A 0 {
+				A_RailAttack(77, 0, true, "darkorchid", "aquamarine1", RGF_FULLBRIGHT, 0, "CHRLPuff", frandom(-0.1,0.1), frandom(-0.1,0.1), 0, 20, 1, 2, "none", 5, 180, 2);
+				A_PlaySound("weapons/chrl_fire1");
+			}
+			// recoil
+			CHRL A 3 Offset(0,44);
+			CHRL A 3 Offset(0,40);
+			CHRL A 4 Offset(0,38);
+			CHRL A 6 Offset(0,0);
+			CHRL A 0 A_PlaySound("weapons/chrl_rechamber");
+			CHRL BCD 5 Offset(-4,38);
+			CHRL A 2 Offset(1,36);
+			CHRL A 2 Offset(2,34);
+			CHRL A 1 Offset(1,32);
+			CHRL A 1 A_ReFire();
+			Goto Ready;
+		Spawn:
+			TLGL A -1; //no pickup sprite yet
+			Stop;
+	}
+}
+
+class CHRLPuff : BulletPuff {
+	default { 
+		+ALWAYSPUFF
 	}
 }
