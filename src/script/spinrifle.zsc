@@ -3,10 +3,11 @@ Class Spinrifle : DoomWeapon {
 	default {
 		inventory.pickupMessage "Snagged a Spinner!";
 		weapon.ammoType "Clip";
-		weapon.ammoUse "1";
-		weapon.slotNumber "4";
-		weapon.ammogive "20";
-		weapon.upsound "weapons/sprf_deploy";
+		weapon.ammoUse 1;
+		weapon.slotNumber 3;
+		weapon.SelectionOrder 3000;
+		weapon.ammoGive 20;
+		weapon.upSound "weapons/sprf_deploy";
 	}
 	
 	States {		
@@ -61,24 +62,23 @@ Class Spinrifle : DoomWeapon {
 Class SpinShot : Actor {
 	default {
 		Obituary "%o got spun right 'round  by %k's Spinner.";
-		Decal BulletChip;
+		Decal "BulletChip";
 		Radius 5;
 		Speed 100;
 		Damage 10;
 		Gravity 1;
 		BounceFactor 0.99;
 		BounceCount 5;
-		DamageType None;
 		Scale 0.5;
 		Projectile;
 		Alpha 0.9;
-		BounceType Hexen;
-		DeathSound "weapons/lpst_impact";
-		//BounceSound  // for bounce
+		BounceType "Hexen";
+		DeathSound "weapons/lpst_impact"; // placeholder, needs crunch?
+		//BounceSound  // for bounce, needs PING
 	}
 	States {
 		Spawn:
-			BAL2 A 1 Bright;
+			BAL2 A 1 Bright; // placeholder, needs to be a metal ball
 			Loop;
 		Death:
 			BAL2 CDE 2 Bright;

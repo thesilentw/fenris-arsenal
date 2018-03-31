@@ -1,4 +1,9 @@
 //#include "script/laspistol.zsc"
-//#include "script/spinrifle.zsc"
+#include "script/spinrifle.zsc"
 #include "script/chainrail.zsc"
+//include "script/lasrifle.zsc"
+//#include "script/lascarbine.zsc"
+//#include "script/lightning_gun.zsc"
+//#include "script/conerifle.zsc"
+//#include "script/thumper.zsc"
 //eof
