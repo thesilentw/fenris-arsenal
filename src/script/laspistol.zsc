@@ -11,7 +11,7 @@ Sprite Index:
 	H is recoiling with muzzle flash	
 */
 
-Class Laspistol : DoomWeapon {
+Class Laspistol : FenrisWeapon {
 	default {
 		inventory.pickupMessage "Liberated a Locidion LP-101!\nERROR: CHARGE LIMITER MALFUNCTION, EXCERCISE CAUTION.";
 		weapon.ammoType "Cell";
@@ -19,7 +19,9 @@ Class Laspistol : DoomWeapon {
 		weapon.slotNumber 2;
 		weapon.SelectionOrder 2000;
 		weapon.ammogive 100;
+		weapon.yadjust 12;
 	}
+	
 	States {			
 		Ready:
 			TNT1 A 0 A_TakeInventory("LasCharge", 0x7FFFFFFF); //remove all charge
@@ -35,7 +37,7 @@ Class Laspistol : DoomWeapon {
 			Loop;
 			
 		Fire:
-			LSPS B 7 A_GiveInventory("LasCharge", 70);
+			LSPS B 5 A_GiveInventory("LasCharge", 70);
 			TNT1 A 0 A_Refire("PlayChargeSound"); //the player is holding fire, play the sound and start charging
 			Goto QuickFire;
 			
@@ -44,10 +46,10 @@ Class Laspistol : DoomWeapon {
 			Goto WaitForRelease;
 		
 		QuickFire:
-			TNT1 A 0 A_FireProjectile("LasShot", 0, 1); //We released fire, shoot a projectile
+			TNT1 A 0 A_FireProjectile("LasShot", angle: 0.2, useammo: true); //We released fire, shoot a projectile
 			TNT1 A 0 A_PlaySound("weapons/LSPS_fire");
 			LSPS H 3 A_Light2;
-			LSPS H 4 BRIGHT A_Light1;
+			LSPS H 4 A_Light1;
 			LSPS G 2 A_Light0;
 			Goto Ready;
 			
@@ -67,102 +69,137 @@ Class Laspistol : DoomWeapon {
 		
 		GainCharge1:
 			LSPS B 1 A_GiveInventory("LasCharge", 1); // accumulate some charge, level 1 sprite
-			LSPS B 1 A_ReFire("WaitForRelease"); // if player is still holding fire, return to the holding state
+			LSPS B 5 A_ReFire("WaitForRelease"); // if player is still holding fire, return to the holding state
 			Goto FireLevel1; // otherwise shoot
 	
 		GainCharge2:
 			LSPS C 1 A_GiveInventory("LasCharge", 1); // accumulate some charge, level 2 sprite
-			LSPS C 1 A_ReFire("WaitForRelease"); // level 2 charge
+			LSPS C 5 A_ReFire("WaitForRelease"); // level 2 charge
 			Goto FireLevel2;
 	
 		GainCharge3:
 			LSPS D 1 A_GiveInventory("LasCharge", 1); // accumulate some charge, level 3 sprite
-			LSPS D 1 A_ReFire("WaitForRelease"); // level 3 charge
+			LSPS D 5 A_ReFire("WaitForRelease"); // level 3 charge
 			Goto FireLevel3;
 	
 		GainCharge4:
 			LSPS E 1 A_GiveInventory("LasCharge", 1); // accumulate some charge, level 4 sprite
-			LSPS E 1 A_ReFire("WaitForRelease"); // level 4 charge
+			LSPS E 5 A_ReFire("WaitForRelease"); // level 4 charge
 			Goto FireLevel4;
 			
-		PlayChargeSound1:
-			LSPS B 1 A_GiveInventory("LasCharge", 1);
-			LSPS B 1 A_PlaySound("weapons/LSPS_chargebeep"); // play the beep
-			Goto WaitForRelease; // go back to the hold state
+		//PlayChargeSound1:
+		//	LSPS B 1 A_GiveInventory("LasCharge", 1);
+		//	LSPS B 1 A_PlaySound("weapons/LSPS_chargebeep"); // play the beep
+		//	Goto WaitForRelease; // go back to the hold state
 			
 		PlayChargeSound2:
-			LSPS C 1 A_GiveInventory("LasCharge", 1); // we skipped the acculumation state to play this sound
-			LSPS C 1 A_PlaySound("weapons/LSPS_chargebeeplevel2");
+			LSPS B 1 A_GiveInventory("LasCharge", 1); // we skipped the acculumation state to play this sound
+			LSPS B 1 A_PlaySound("weapons/LSPS_chargebeeplevel2");
 			Goto WaitForRelease;
 		
 		PlayChargeSound3:
-			LSPS D 1 A_GiveInventory("LasCharge", 1);
+			LSPS C 1 A_GiveInventory("LasCharge", 1);
 			LSPS C 1 A_PlaySound("weapons/LSPS_chargebeeplevel3");
 			Goto WaitForRelease;
 			
 		PlayChargeSound4:
-			LSPS E 1 A_GiveInventory("LasCharge", 1);
-			LSPS E 1 A_PlaySound("weapons/LSPS_chargebeeplevel4");
+			LSPS D 1 A_GiveInventory("LasCharge", 1);
+			LSPS D 1 A_PlaySound("weapons/LSPS_chargebeeplevel4");
 			Goto WaitForRelease;
 		
 		PlayChargeSoundOverload:
-			LSPS F 1 A_GiveInventory("LasCharge", 1);
+			LSPS E 1 A_GiveInventory("LasCharge", 1);
 			LSPS F 1 A_PlaySound("weapons/LSPS_chargebeepoverload");
 			Goto WaitForRelease;
 		
 		
 		FireLevel1:
-			TNT1 A 0 A_FireProjectile("LasShot", 0, 1);
-			TNT1 A 0 A_PlaySound("weapons/LSPS_fire");
+			TNT1 A 0 {
+				A_FireProjectile("LasShot", 0.2, true);
+				A_PlaySound("weapons/LSPS_fire");
+			}
 			LSPS H 3 A_Light2;
-			LSPS H 4 BRIGHT A_Light1;
+			LSPS H 4 A_Light1;
 			LSPS G 2 A_Light0;
 			LSPS A 4;
 			Goto Ready;
 		
 		FireLevel2:
-			LSPS B 0 A_FireProjectile("LasShotLevel2", 0, 1);
-			TNT1 A 0 A_PlaySound("weapons/LSPS_fire");
+			TNT1 A 0 {
+				A_FireProjectile("LasShotLevel2", 0.2, true);
+				A_PlaySound("weapons/LSPS_fire");
+			}
 			LSPS H 3 A_Light2;
-			LSPS H 4 BRIGHT A_Light1;
+			LSPS H 4 A_Light1;
 			LSPS G 2 A_Light0;
 			LSPS A 4;
 			Goto Ready;
 		
 		FireLevel3:
-			LSPS C 0 A_FireProjectile("LasShotLevel3", 0, 1);
-			TNT1 A 0 A_PlaySound("weapons/LSPS_fire");
+			TNT1 A 0 {
+				A_FireProjectile("LasShotLevel3", 0.2, true);
+				A_PlaySound("weapons/LSPS_fire");
+			}
 			LSPS H 3 A_Light2;
-			LSPS H 4 BRIGHT A_Light1;
+			LSPS H 4 A_Light1;
 			LSPS G 2 A_Light0;
 			LSPS A 4;
 			Goto Ready;
 		
 		FireLevel4:
-			LSPS D 0 A_FireProjectile("LasShotLevel4", 0, 1);
-			TNT1 A 0 A_PlaySound("weapons/LSPS_fire");
+			TNT1 A 0 {
+				A_FireProjectile("LasShotLevel4", 0.2, true);
+				A_PlaySound("weapons/LSPS_fire");
+			}
 			LSPS H 3 A_Light2;
-			LSPS H 4 BRIGHT A_Light1;
+			LSPS H 4 A_Light1;
 			LSPS G 2 A_Light0;
 			LSPS A 4;
 			Goto Ready;
 
 		Overloading:
-			LSPS D 1 A_GiveInventory("LasCharge", 1); // accumulate some charge, level 4 sprite
-			TNT1 A 0 A_JumpIf(countInv("LasCharge") > 420, "OverloadExplosion"); // splody time
-			LSPS D 1 A_ReFire("WaitForRelease");
-			TNT1 A 0 A_FireProjectile("LasShotOverload", 0, 1);
-			TNT1 A 0 A_PlaySound("weapons/LSPS_firebig");
-			LSPS H 3 A_Light2;
-			LSPS H 4 BRIGHT A_Light1;
-			LSPS G 2 A_Light0;
-			LSPS D 10;
+			TNT1 A 0 A_JumpIf(countInv("LasCharge") > 341, "OverloadExplosion"); // splody time
+			LSPS E 1 {
+				A_GiveInventory("LasCharge", 1); // accumulate some charge, level 4 sprite
+				A_WeaponOffset(-2, 0, WOF_ADD);
+			}
+			LSPS E 1 A_WeaponOffset(2, 0, WOF_ADD);
+			LSPS E 1 A_WeaponOffset(-2, 2, WOF_ADD);
+			LSPS E 1 A_WeaponOffset(2, -2, WOF_ADD);
+			LSPS F 1 {
+				A_GiveInventory("LasCharge", 1); // accumulate some charge, level 4 sprite
+				A_WeaponOffset(-2, 0, WOF_ADD);
+			}
+			LSPS F 1 A_WeaponOffset(2, 0, WOF_ADD);
+			LSPS F 1 A_WeaponOffset(-2, 2, WOF_ADD);
+			LSPS F 1 A_WeaponOffset(2, -2, WOF_ADD);
+			LSPS E 1 A_ReFire("WaitForRelease");
+			TNT1 A 0 {
+				A_WeaponOffset(0, 32, WOF_INTERPOLATE);
+				A_FireProjectile("LasShotOverload", 0.2, true);
+				A_PlaySound("weapons/LSPS_firebig");
+			}
+			LSPS H 3 {
+				A_Light2();
+				A_WeaponOffset(0, 40, WOF_INTERPOLATE);
+			}
+			LSPS H 4 {
+				A_WeaponOffset(0, 37, WOF_INTERPOLATE);
+				A_Light1();
+			}
+			LSPS G 2 {
+				A_WeaponOffset(0, 34, WOF_INTERPOLATE);
+				A_Light0();
+			}
+			LSPS C 10 A_WeaponOffset(0, 32, WOF_INTERPOLATE);
 			Goto Ready;
 		
 		OverloadExplosion:
-			TNT1 A 1 A_SetBlend("Cyan", 0.8, 70);
-			TNT1 A 0 A_PlaySound("weapons/LSPS_overloadexplosion");
-			TNT1 A 0 A_Explode(500,256);
+			TNT1 A 1 {
+				A_SetBlend("Cyan", 0.95, 70);
+				A_PlaySound("weapons/LSPS_overloadexplosion");
+				A_Explode(500,256);
+			}
 			Goto Ready;
 		
 		Spawn:
@@ -184,6 +221,7 @@ Class LasShot : Actor {
 		RenderStyle "Add";
 		Alpha 0.75;
 		DeathSound "weapons/LSPS_impact";
+		Obituary "%o got some laser face removal, courtesy of %k's Laser Pistol.";
 	}
 	States {
 		Spawn:
@@ -217,17 +255,17 @@ Class LasShotOverload : LasShot {
 	default {
 		Radius 16;
 		Height 16;
-		Speed 40;
 		DamageFunction (150+random(0,50));
 		Scale 1.0;
 		DeathSound "weapons/bfgx";
+		Obituary "Good job, %k, there isn't much left of %o other than a pile of ash.";
 	}
 	States {
 		Spawn:
 			LSBL ABC 2;
 			Loop;
 		Death:
-			LSBL EFGH 3;
+			LSBL EFGH 3 A_Explode(100, 128);
 			Stop;
 	}
 }
@@ -238,87 +276,4 @@ Class LasCharge : Inventory {
 	}
 }
 	
-		
-		/*////////////
-		//
-		// OLD STATES
-		//
-		/////////////
-		
-		Fire:
-			LSPS G 5 
-			TNT1 A 0 A_ReFire("Charge1") //If we're holding, go to charging states
-			TNT1 A 0 A_FireProjectile("LasShot", 0, 1) //If we released fire, shoot a projectile
-			TNT1 A 0 A_TakeInventory("LasCharge", 5)
-			TNT1 A 0 A_PlaySound("weapons/LSPS_fire")
-			LSPS E 4 A_Light2
-			LSPS F 4 BRIGHT A_Light1
-			LSPS E 4 A_Light0
-			//LSPS A 3 
-			Goto Ready
-
-		Charge1:
-			LSPS B 35 A_PlaySound("weapons/LSPS_chargestart") //We just hit level 1
-			LSPS B 25
-			TNT1 A 0 A_Refire("Charge2") //Are we still charging?
-			TNT1 A 0 A_FireProjectile("LasShot", 0, 1) //If we released fire, shoot a projectile.
-			TNT1 A 0 A_PlaySound("weapons/LSPS_fire")
-			LSPS E 4 A_Light2
-			LSPS F 4 BRIGHT A_Light1
-			LSPS E 4 A_Light0
-			LSPS A 4
-			Goto Ready
-			
-		Charge2:
-			LSPS C 25 A_PlaySound("weapons/LSPS_chargebeep") //We just hit level 2
-			LSPS C 25 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS C 15
-			TNT1 A 0 A_Refire("Charge3") //Are we still charging?
-			TNT1 A 0 A_FireProjectile("LasShot", 0, 1) //If we released fire, shoot a projectile.
-			TNT1 A 0 A_PlaySound("weapons/LSPS_fire")
-			LSPS E 4 A_Light2
-			LSPS F 4 BRIGHT A_Light1
-			LSPS E 4 A_Light0
-			LSPS A 4
-			Goto Ready
-		
-		Charge3:
-			LSPS D 12 A_PlaySound("weapons/LSPS_chargebeep") //We just hit level 3, overload soon!
-			LSPS D 13 A_PlaySound("weapons/LSPS_chargebeep") 
-			LSPS D 12 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 15
-			TNT1 A 0 A_Refire("ChargeOverload") //Are we still charging?
-			TNT1 A 0 A_FireProjectile("LasShot", 0, 1) //If we released fire, shoot a projectile.
-			TNT1 A 0 A_PlaySound("weapons/LSPS_fire")
-			LSPS E 4 A_Light2
-			LSPS F 4 BRIGHT A_Light1
-			LSPS E 4 A_Light0
-			LSPS A 4
-			Goto Ready	
-		
-		ChargeOverload:
-			LSPS D 5 A_PlaySound("weapons/LSPS_chargebeep") //We just hit Overload, better stop!
-			LSPS D 5 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 5 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 5 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 5 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 5 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 5 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 2 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 2 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 2 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 2 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 2 A_PlaySound("weapons/LSPS_chargebeep")
-			LSPS D 2 A_PlaySound("weapons/LSPS_chargebeep")
-			TNT1 A 0 A_Refire("OverloadExplosion") //Really? Well, ok. 
-			TNT1 A 0 A_FireProjectile("LasShot_ChargeOverload", 0, 1) //If we released fire, shoot a projectile.
-			TNT1 A 0 A_PlaySound("weapons/LSPS_firebig")
-			TNT1 A 0 A_Recoil(80)
-			LSPS E 4 A_Light2
-			LSPS F 4 BRIGHT A_Light1
-			LSPS E 4 A_Light0
-			LSPS D 10 
-			Goto Ready
-*/
-//
 // EOF

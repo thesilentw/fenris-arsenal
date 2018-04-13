@@ -1,7 +1,12 @@
+//global
+weapons/noammo noammo
+$volume weapons/noammo 0.25
+//
 // chainrail
 weapons/chrl_fire1 chrlsht2
 weapons/chrl_rechamber chrlrc5
 $volume weapons/chrl_rechamber 0.4
+//
 // laser pistol
 weapons/lsps_firebig lpshtbg
 weapons/lsps_chargebeep lpchgbp
@@ -14,8 +19,55 @@ weapons/lsps_impact lpimp
 weapons/lsps_reload lprld
 weapons/lsps_fire lpsht
 weapons/lsps_overloadexplosion lpovrxp
+//
 // spinrifle
 weapons/sprf_deploy sprfdply
 weapons/sprf_fire sprfsht
 weapons/sprf_fireloop sprfshtl
+weapons/sprf_fireend sprfshte
+//weapons/sprf_hit sprfhit
+weapons/sprf_ricochet sprfrico
+$volume weapons/sprf_deploy 0.5
+$volume weapons/sprf_fire 0.5
+$volume weapons/sprf_fireloop 0.5
+//$volume weapons/sprf_hit 0.6
+$volume weapons/sprf_ricochet 0.15
+//
+// thumper
+weapons/thumper_fire thmpsht
+weapons/thumper_reload thmprld
+weapons/thumper_explosion thmpexp
+weapons/thumper_fireamped thmpsham
+weapons/thumper_reloadshort thmprlsh
+weapons/thumper_explosionamped thmpexam
+$volume weapons/thumper_reload 0.3
+$volume weapons/thumper_reloadshort 0.4
+$volume weapons/thumper_fireamped 0.8
+$volume weapons/thumper_explosionamped 0.9
+$attenuation weapons/thumper_explosion 0.1
+$attenuation weapons/thumper_explosionamped 0.8
+//
+// laser rifle
+weapons/lsrf_fire lsrfsht
+weapons/lsrf_fireold lsrfshto
+$volume weapons/lsrf_fire 0.7
+weapons/lsrf_impact lsblhit
+$volume weapons/lsrf_impact 0.4
+$attenuation weapons/lsrf_impact 1.2
+weapons/lsrf_steam lsrfstm
+weapons/lsrf_steamfade lsrfstmf
+$volume weapons/lsrf_steamfade 0.5
+//
+// cone rifle
+//
+// laser carbine
+//
+// lightning gun
+weapons/lgun_fire lgunzap
+weapons/lgun_chargeloop lgunclpl
+weapons/lgun_chargeloop_high lgunclph
+weapons/lgun_elecloop lgunellp
+weapons/lgun_rechargebeep lgunrchg
+$attenuation weapons/lgun_elecloop 1.5
+$volume weapons/lgun_elecloop 0.2
 // eof
