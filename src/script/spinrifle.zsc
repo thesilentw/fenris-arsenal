@@ -55,9 +55,9 @@ Class Spinrifle : FenrisWeapon {
 				A_StopSound(CHAN_WEAPON);
 				A_PlaySound("weapons/sprf_fireend", CHAN_AUTO);
 			}
-			SPRF B 3 A_WeaponOffset(0, 35, WOF_INTERPOLATE);
-			SPRF A 3 A_WeaponOffset(0, 33.5, WOF_INTERPOLATE);
-			SPRF C 3 A_WeaponOffset(0, 32, WOF_INTERPOLATE);
+			SPRF E 3 A_WeaponOffset(0, 35, WOF_INTERPOLATE);
+			SPRF F 3 A_WeaponOffset(0, 33.5, WOF_INTERPOLATE);
+			SPRF G 3 A_WeaponOffset(0, 32, WOF_INTERPOLATE);
 			Goto Ready;
 		
 		AutoFireStart:

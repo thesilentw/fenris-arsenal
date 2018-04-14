@@ -19,6 +19,9 @@ weapons/lsps_impact lpimp
 weapons/lsps_reload lprld
 weapons/lsps_fire lpsht
 weapons/lsps_overloadexplosion lpovrxp
+$volume weapons/lsps_chargestart 0.45
+$volume weapons/lsps_impact 0.45
+$volume weapons/lsps_fire 0.8
 //
 // spinrifle
 weapons/sprf_deploy sprfdply
