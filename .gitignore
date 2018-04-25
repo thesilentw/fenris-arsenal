@@ -17,3 +17,6 @@ $RECYCLE.BIN/
 
 # Ignore local deploy folder for builds
 deploy/
+
+# ignore packed files
+*.pk3
