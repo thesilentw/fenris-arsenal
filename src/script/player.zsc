@@ -6,11 +6,11 @@ Class FenrisPlayer : DoomPlayer {
 		Player.StartItem "Chainrail";
 		Player.StartItem "Spinrifle";
 		Player.StartItem "Lasrifle";
-		Player.StartItem "Lightninggun";
+		//Player.StartItem "Lightninggun";
 		Player.StartItem "Thumper";
-		Player.StartItem "Clip", 500;
-		Player.StartItem "Cell", 500;
-		Player.StartItem "RocketAmmo", 6;
+		Player.StartItem "Clip", 200;
+		Player.StartItem "Cell", 200;
+		Player.StartItem "RocketAmmo", 20;
 		Player.AttackZOffset 8;
 		}
 }

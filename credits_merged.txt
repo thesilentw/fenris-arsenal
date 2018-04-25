@@ -1,0 +1,33 @@
+Greetz and rice pudding, not in order:
+marrub
+wildweasel
+marisa kirasame
+yholl
+sgt. shivers
+auntie death
+ispook
+the rest of the discord crew that I forgot, sorry! Yell at me and you'll be in the list next time.
+
+credits/ChainRail
+Sprites: Rebel Moon, modifications by SilentW
+Sounds: Rebel Moon, freesound.org, WRW Resource Pack Sniper Rifle (Realm667), modifications by SilentW
+
+credits/LasPistol
+Sprites: Rebel Moon
+Sounds: Marathon / 2 / oo
+Note: This one actually required the least modification of all the weapons, but has the most complex code.
+
+credits/Lasrifle
+Sprites: Rebel Moon, muzzle flashes from that big image of flashes that gets passed around all the time on the ZDoom Forums, Iron Angel Of The Apocalypse, modifications by SilentW
+Projectile sprites from Iron Angel Of The Apocalypse, recolored by SilentW
+Sounds: Descent 1/2, freesound.org, the HIGH-MACS Sim Sound dump, modifications and cutups by SilentW
+
+credits/spinner / spinrifle
+Sprites: Rebel Moon, CyClones, modifications by SilentW
+Projectile Sprites: Original by SilentW
+Sounds: Unreal 1/Gold, Unreal Tournament, freesound.org
+
+credits/Thumper
+Sprites: Rebel Moon, the big sheet 'o muzzle flashes, some random CC fire rings, modifications by SilentW
+Explosions: Daedalus
+Sounds: Rebel Moon, freesound.org, pond5, Syphon Filter 1, and System Shock 1/2.

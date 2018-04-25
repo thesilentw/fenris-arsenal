@@ -1,0 +1,62 @@
+README - FENRIS WEAPONS
+
+<<< LORE ALERT - if you hate fluff, skip until the next bit with carets >>>
+
+Greeting, Trooper, and let me be the first to welcome you to Luna.
+
+I understand that this isn't most soldiers' first choice for a posting. You're probably a little... apprehensive, because who hasn't heard of the multiple Selenite uprisings in the last few years, all led by the enigmatic and bloody-handed "Starkiller"?
+
+Well, the UAC's exclusive security contract has put all that to rest, I'm happy to say. With last quarter's multiple deployments of contractors to every single habitat and dome on Luna, we're pretty sure we've put paid to the rebels - they're all dead or in hiding, thanks to the efforts of our Contract Liason and Deployment Prioritization AI - CULDECEPT.
+
+That's right! UAC's newest security contract is administered completely by artifical intelligence, and since the handover to fully autonomous planning and dispatch, we've seen a 300% decrease in response time and a 476% increase in response effectiveness! Our casualites are the lowest the Lunar Security Forces have had in a decade, and we're pretty confident that within a fiscal year, the UAC will have Luna back in the black and working FOR Earth, not against it.
+
+And that, Trooper, is where you come in. You and your fellow troopers are an integral part of the exclusive rent-to-own contract that the UN has signed on all recently liberated lunar assets - We take 'em, you hold 'em, you reap the rewards!
+
+Of course, Luna's supply infrastructure is pretty much toast as far as anything other than basic subsistence is concerned... but don't worry, the UAC and its wholly owned subsidiaries are available to provide whatever tools and equipment you need to fulfill your contractal obligations!
+
+Enjoy your stay on Luna, Trooper, and remember, if you ever consider a change of employers, UAC provides some pretty nice bonus packages for vac-certified employees with a combat infantryman's badge...
+
+<<< LORE END >>>
+
+What is this?
+Fenris Weapons is a mod that ports a bunch of content from Fenris Wolf's 90s FPS Rebel Moon to GZDoom.
+
+What's in it?
+This is an alpha release. It currently contains 5 weapons and a playerclass that can use them. The weapons are almost completely original - virtually none of the sprites or sounds have ever been used in a Doom mod yet!
+	Slot 2: 
+		Laser Pistol - vweeeooowwwww PEWWW (explodes if you charge too long)
+	Slot 3:
+		Laser Rifle - PEW PEW PEW
+		Spinner - pwing pwong aargh
+	Slot 4:
+		Chainrail - blang chik-chak (precision)
+	Slot 5:
+		Thumper - floop BOOM
+
+What's NOT in it?
+Pickup sprites, replacement of Doom / Doom 2 weapons, and unique ammo types.
+
+What's planned?
+In no particular order:
+	Fixing everything in the 'what's not in it' section
+	More guns! Access the Raptor Labs Static Discharge Cannon and the CODENAME CONE RIFLE, and maybe more!
+	Companion Drones - Pick from the XPD "Besra" guard drone or the XPO "Ovambo" stoop-attack drone!	
+	Player physics - be a UN or Rebel moontrooper!
+	A unique HUD - Get a cool spacesuit!
+	Enemies - Fight the UN bluesuits, the Rebel redsuits, tons of robots, and maybe even an alien or two...
+	More things I haven't thought of yet but will come up with at 3AM and definitely maybe do!
+
+	
+Questions and problems:
+
+Help the guns feel wierd and the damage is off
+	Yes! They do! I have NO IDEA HOW TO BALANCE THEM. Please submit feedback or I will just randomly emit numbers until you all get bored of complaining.
+
+Your sounds are terrible
+	Sorry, you are wrong. The sounds are amazing. But the volume may be wierd, so please do complain!
+	
+You are bad at video games
+	Yes, this is probably true, but also not a question.
+	
+I have another thing to say or ask that isn't in this tiny list that you didn't put much effort into
+	This is expected behavior, please post in the thread or PM me.

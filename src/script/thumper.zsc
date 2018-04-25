@@ -67,14 +67,14 @@ Class Thumper : FenrisWeapon {
 				else return ResolveState("Load");
 			}
 		FireGrenade:
-			THMP A 4 {
+			THMP C 3 {
 				A_FireProjectile("ThumperGrenade",0,1,0,0,0,-1);
 				A_PlaySound("weapons/thumper_fireamped", CHAN_WEAPON);
 				invoker.isLoaded = false;
 				A_WeaponOffset(0, 48, WOF_INTERPOLATE);
 				}
-			THMP A 4 A_WeaponOffset(-2, 48, WOF_INTERPOLATE);
-			THMP A 8;
+			THMP D 3 A_WeaponOffset(-2, 48, WOF_INTERPOLATE);
+			THMP B 8;
 			THMP B 6 A_WeaponOffset(0, 48, WOF_INTERPOLATE);
 			THMP B 2 A_WeaponOffset(0, 44, WOF_INTERPOLATE);
 			THMP B 3 A_WeaponOffset(0, 39, WOF_INTERPOLATE);
@@ -120,25 +120,26 @@ Class ThumperGrenade : Actor {
 	default {
 		Radius 16;
         Height 16;
-        Speed 40;
-        Scale 1;
+        Speed 35;
+        Scale 1.2;
         Damage 50;
-        Gravity 0.85;
+        Gravity 0.80;
         DamageType "Explosive";
         Projectile;
 		-NOGRAVITY
 		+BOUNCEONWALLS
 		+BOUNCEONCEILINGS
-		Obituary "Once you've pulled the pin on Mr. Grenade, he is no longer your friend, %o.";
+		+FORCEXYBILLBOARD;
+		Obituary "%o acknowledges %k's mastery of the bloop tube.";
 		DeathSound "weapons/thumper_explosionamped";
 	}
 	
 	States {
 		Spawn:
-			SGRN A 1 Bright;
+			SGRN A 1;
 			Loop;
 		Death:
-			MISL BCD 4 Bright A_Explode(20,128);
+			THXP ABCDEFGH 2 A_Explode(50,96);
 			Stop;
 	}
 }
