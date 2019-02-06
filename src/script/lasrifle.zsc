@@ -133,14 +133,14 @@ Class Lasrifle: FenrisWeapon {
 				invoker.needsCooling = false;
 				return ResolveState("Ready");
 			}
-		Steamjet: //40 tics
+		Steamjet: //48 tics
 			STPL A 4 {
 				A_OverlayFlags(invoker.steamLID, PSPF_ADDWEAPON | PSPF_RENDERSTYLE | PSPF_ALPHA, true);
 				A_OverlayAlpha(invoker.steamLID, 0.8);
 				A_OverlayRenderstyle(invoker.steamLID, STYLE_Translucent);
 				A_OverlayOffset(invoker.steamLID, 180, 90);
 			}
-			STPL BCDEFGHIJ 4 {
+			STPL BCDEFGHIJAB 4 {
 				A_OverlayOffset(invoker.steamLID, (180 + frandom(-3, 3)), (90 + frandom(-2, 2)));
 			}
 			Stop;
