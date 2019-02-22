@@ -7,7 +7,7 @@ Class FenrisPlayer : DoomPlayer {
 		Player.StartItem "Spinrifle";
 		Player.StartItem "Lasrifle";
 		//Player.StartItem "Lightninggun";
-		Player.StartItem "LGBeam";
+		Player.StartItem "LGTest";
 		Player.StartItem "Thumper";
 		Player.StartItem "Clip", 200;
 		Player.StartItem "Cell", 200;

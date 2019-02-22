@@ -3,6 +3,9 @@
 // Prototype for all Fenris Arsenal weapons
 //
 Class FenrisWeapon : DoomWeapon {
+	//bool bLog;
+	//property bLog : bLog;
+	
 	default {
 		inventory.pickupMessage "OBTAINED DEFAULT WEAPON - THIS IS A BUG";
 		weapon.slotNumber 1;
@@ -16,8 +19,8 @@ Class FenrisWeapon : DoomWeapon {
 		//weapon.attacksound "DSPISTOL";
 		weapon.upsound "DSSGCOCK";
 		weapon.yadjust 12;
+		//bLog true;
 	}
-	
 	States {
 		Ready:
 			SHTG A 1 A_WeaponReady();
@@ -45,6 +48,7 @@ Class FenrisWeapon : DoomWeapon {
 #include "script/lasrifle.zsc"
 #include "script/lascarbine.zsc"
 //#include "script/lightninggun.zsc"
-#include "script/lgbeam.zsc"
+//#include "script/lgbeam.zsc"
 #include "script/conerifle.zsc"
+#include "script/lgtest.zsc"
 //eof

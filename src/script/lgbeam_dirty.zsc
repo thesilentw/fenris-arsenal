@@ -6,7 +6,7 @@ Give your enemies the world's worst case of static cling...
 
 THIS IS THE CONSTANT BEAM VERSION
 
-I totally stole a lot of this from Final Doomer - the TNT Maser and AA Stasis Bow specifically.
+I stole the beam functionality from Final Doomer's TNT Maser, and the stun is vaguely based on the Stasis Bow
 ty Yholl pls no prosecute
 
 */ 
@@ -158,36 +158,6 @@ Class LBeam : Actor {
 			TNT1 A 0 // impact effect here
 			TNT1 A 0 A_Warp (AAPTR_TRACER, 0,0,0, 0, WARPF_NOCHECKPOSITION, "ShockLoop", 0.5);
 			Stop;
-			
-			/*
-			TNT1 A 0 {
-				if (tracer) {
-					if (countInv("ChargeCounter", AAPTR_TRACER) <= 50) {
-						return ResolveState("ExtendCharge");
-					}
-					else if (countInv("ChargeCounter", AAPTR_TRACER) <= 60) {
-						return ResolveState("GiveCharge");
-					}
-					else {
-						return ResolveState("ExtendCharge");
-					}
-				}
-				return ResolveState(Null);
-			}
-			TNT1 A 0 {
-				if (tracer) {
-					if (countInv("ChargeCounter", AAPTR_TRACER) > 0) {
-						return ResolveState("ExtendCharge");
-					}
-					else {
-						return ResolveState("GiveCharge");
-					}
-				}
-				else return ResolveState("Null");
-			}		
-			TNT1 A 0 A_Warp(AAPTR_TRACER, flags: WARPF_NOCHECKPOSITION, success_state: "GiveCharge", pitch: 0.5);
-			Stop;
-			*/
 
 		JustImpact:
 			TNT1 A 0 // impact effect here
@@ -201,19 +171,6 @@ Class LBeam : Actor {
 			TNT1 A 0 // indicate extension
 			TNT1 A 0 A_GiveInventory ("ChargeActivePowerup", 1, AAPTR_TRACER);
 			Stop;
-		
-		/*
-		ExtendCharge:
-			TNT1 A 0 A_GiveInventory("ChargeCounter", 10, AAPTR_TRACER);
-			Stop;
-		
-		GiveCharge:
-			TNT1 A 0 A_SpawnItemEx("ChargeLogic", flags: SXF_NOCHECKPOSITION | SXF_TRANSFERPOINTERS);
-			TNT1 A 0 A_SpawnItemEx("ChargeVFX", flags: SXF_NOCHECKPOSITION | SXF_TRANSFERPOINTERS);
-			TNT1 A 0 A_GiveInventory("ChargeCounter", 50, AAPTR_TRACER);
-			//TNT1 A 0 A_GiveInventory("GiveChargeObjects", 1, AAPTR_TRACER);
-			Stop;
-		*/
 			
 	}
 }
@@ -314,29 +271,6 @@ class ChargeLogic : Actor {
 				A_TakeInventory("ChargeCounter", 0x777777, giveto: AAPTR_TRACER);
 				Console.printf("ChargeLogic hit death state, destroying");
 				}
-			/*
-			TNT1 A 1 {
-				// remove all charge amount
-				// fire zappies
-				// hurt monster?
-				int blastradius = 256;
-				int radiustracker = 0;
-				Actor testActor;
-				BlockThingsIterator list = BlockThingsIterator.Create(self, 256);
-				list.next();
-				do {
-					testActor = list.thing;
-					if (testActor.bIsMonster)  {
-						if ( (Distance2D(testActor) < blastradius) && CheckSight(testActor) ) {
-							radiustracker++;
-						}
-					}
-				} while (list.next());
-				int totalDamage = radiusTracker*baseDamage;
-				A_Explode(totaldamage, 92);
-				Console.printf("ChargeLogic destroying - Will catch target + %i monsters, doing %i damage to each", radiusTracker, totalDamage);
-			}
-			*/
 			stop;	
 		
 		DeathNull: //if we have a null tracer
@@ -436,23 +370,18 @@ class LGBeamSeeker : FastProjectile {
 		Speed 60;
 		Damage 15;
 		Projectile;
-		//+FORCEPAIN;
-		//+HITTRACER; // sets the thing it hits to AAPTR_TRACER
 		+SEEKERMISSILE;
 		+SCREENSEEKER;
-		//Decal "BulletChip";
 		MissileType "LGSeekerTrail";
 	}
 	
 	States {
 		Spawn:
-			//FWDP A 1 Bright;
 			TNT1 A 0 A_SeekerMissile(2, 20, SMF_LOOK | SMF_PRECISE, 100);
 			TNT1 A 1 A_SpawnItemEx("LGSeekerTrail");
 			Loop;
 		Death:
-			TNT1 A 0; //A_JumpIfInventory("StaticChargeActive", 1, "ExtendCharge", AAPTR_TRACER);
-			//TNT1 A 0 A_Warp(AAPTR_TRACER, flags: WARPF_NOCHECKPOSITION, success_state: "GiveItem", pitch: 0.5);
+			TNT1 A 0;
 			Stop;
 		XDeath:
 			Goto Death;

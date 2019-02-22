@@ -1,0 +1,16 @@
+// TRNSLATE
+//
+// Example translations taken from PillowBlaster's Guncaster
+// Seriously, go play it, it's fucking fantastic
+//
+//
+
+Base = "0:255=0:255"
+ToxicGreen = "0:255=%[0.045, 0.1, 0.015]:[0.25, 1.2, 0.11]"
+CharcoalGrey = "0:255=%[0.0, 0.0, 0.0]:[0.1, 0.1, 0.1]"
+YellowLightning = "0:255=%[0.9, 0.9, 0.1]:[1.0, 1.0, 1.0]"
+BlueLightning = "0:255=%[0.1, 0.1, 0.9]:[1.0, 1.0, 1.0]"
+BlueGoo = "0:255=%[0.025, 0.02, 0.1]:[0.15, 0.1, 1.2]"
+
+
+//EOF
