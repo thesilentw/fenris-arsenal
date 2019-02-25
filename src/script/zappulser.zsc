@@ -42,7 +42,7 @@ Class ZapPulser : Actor {
 		DoPulse:
 			TNT1 A 20 {
 				if (tracer) {
-					nearbyActors = BlockThingsIterator.Create(tracer, 128);
+					nearbyActors = BlockThingsIterator.Create(tracer, 192);
 					while (nearbyActors.Next()) {
 						if (CheckSight(nearbyActors.thing, 0)) {
 							SpawnMissile(nearbyActors.thing, "ZapPulseBouncer");
@@ -80,8 +80,8 @@ Class ZapPulseBouncer : Actor {
 		Decal "Scorch";
 		Radius 8;
 		Speed 35;
-		Damage 10;
-		Gravity 1;
+		Damage 40;
+		Gravity 0;
 		BounceFactor 0.99;
 		BounceCount 2;
 		Scale 0.4;
@@ -91,6 +91,7 @@ Class ZapPulseBouncer : Actor {
 		BounceType "Hexen";
 		+BOUNCEONACTORS;
 		MissileType "ZapPulseBouncerTrail";
+		+HITOWNER;
 		//DeathSound "weapons/sprf_hit";
 		//BounceSound "weapons/sprf_ricochet";
 	}
@@ -99,7 +100,7 @@ Class ZapPulseBouncer : Actor {
 			LTLP ABC 3;
 			Loop;
 		Death:
-			LTXL ABCDEFG 3 A_Explode(128,128);
+			LTXL ABCDEFG 3; //A_Explode(128,64);
 			Stop;
 	}
 }

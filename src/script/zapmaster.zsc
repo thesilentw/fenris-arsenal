@@ -69,6 +69,9 @@ Class ZapMaster : Actor {
 		Death:
 			TNT1 A 1 { //needs to be at least 1 tic for the remove to work
 				A_SetInventory("ZapTracker", 0, AAPTR_TRACER);
+				if (tracer.health < 1) {
+					tracer.setStateLabel("Death");
+				}
 				tracer.A_SetTranslation("Base");
 				if (loggingEnabled) {
 					Console.printf("Removing ZapTracker from target");

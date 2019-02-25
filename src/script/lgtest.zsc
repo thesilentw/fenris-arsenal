@@ -108,7 +108,7 @@ Class Zapper : FastProjectile {
 		Radius 4;
 		Height 4;
 		Speed 150;
-		Damage 1;
+		Damage 15;
 		PROJECTILE;
 		+FORCEPAIN;
 		+HITTRACER; // sets the thing it hits to AAPTR_TRACER
@@ -145,10 +145,10 @@ Class Zapper : FastProjectile {
 				return ResolveState(null);
 			}					
 			TNT1 A 0 {
-				if (tracer.health < 1) {
-					if (loggingEnabled) {Console.printf("Tracer health < 1");}
-					return ResolveState("JustImpact");
-				}
+				//if (tracer.health < 1) {
+				//	if (loggingEnabled) {Console.printf("Tracer health < 15");}
+				//	return ResolveState("JustImpact");
+				//}
 				if (tracer.bBoss) {
 					if (loggingEnabled) {Console.printf("Hit Boss");}
 					return ResolveState("JustImpact");
