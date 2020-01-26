@@ -4,6 +4,7 @@
 Class ZapMaster : Actor {
 	bool loggingEnabled;
 	int maxLifetime, currentLifetime, flashInterval, flashCount;
+	int lifetimeCountdown;
 	
 	property loggingEnabled : loggingEnabled;
 	property maxLifetime : maxLifetime;
@@ -23,8 +24,7 @@ Class ZapMaster : Actor {
 	States {
 		Spawn:
 			TNT1 A 0 {
-				flashCount = 0;
-				currentLifetime = 0;
+				flashCount = currentLifetime = lifetimeCountdown = 0;				
 			}
 			Goto MainLoop;
 
