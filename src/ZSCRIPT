@@ -1,6 +1,6 @@
 version "3.4"
-#include "script/weapons.zsc"
-#include "script/items.zsc"
-#include "script/player.zsc"
+#include "script/weapons.zs"
+#include "script/items.zs"
+#include "script/player.zs"
 
 //eof

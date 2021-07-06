@@ -1,5 +1,5 @@
 /*
-LGTEST.ZSC
+LGTEST.ZS
 
 Ok, let's try something new.
 
@@ -13,9 +13,9 @@ Play VFX as long as the enemy is stunned (ZapVFX)
 Emit targeted projectiles as long as the enemy is stunned (ZapPulser)
 
 */
-#include "script/zapmaster.zsc"
-#include "script/zapvfx.zsc"
-#include "script/zappulser.zsc"
+#include "script/zapmaster.zs"
+#include "script/zapvfx.zs"
+#include "script/zappulser.zs"
  
 Class LGTest: FenrisWeapon {
 	int vfxLayerId, shakeval;

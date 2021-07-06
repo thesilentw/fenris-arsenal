@@ -41,14 +41,14 @@ Class FenrisWeapon : DoomWeapon {
 	}
 }
 
-#include "script/laspistol.zsc"
-#include "script/spinrifle.zsc"
-#include "script/chainrail.zsc"
-#include "script/thumper.zsc"
-#include "script/lasrifle.zsc"
-#include "script/lascarbine.zsc"
-//#include "script/lightninggun.zsc"
-//#include "script/lgbeam.zsc"
-#include "script/conerifle.zsc"
-#include "script/lgtest.zsc"
+#include "script/laspistol.zs"
+#include "script/spinrifle.zs"
+#include "script/chainrail.zs"
+#include "script/thumper.zs"
+#include "script/lasrifle.zs"
+#include "script/lascarbine.zs"
+//#include "script/lightninggun.zs"
+//#include "script/lgbeam.zs"
+#include "script/conerifle.zs"
+#include "script/lgtest.zs"
 //eof
